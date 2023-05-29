@@ -1,0 +1,62 @@
+{
+  "name": "cypress-tests-for-vscode",
+  "displayName": "Cypress Tests for VSCode",
+  "description": "Run Cypress tests in Visual Studio Code.",
+  "publisher": "cypress-tests-for-vscode",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Manuel-Suarez-Abascal/cypress-tests-for-vscode"
+  },
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.installCypress",
+        "title": "CY: Install Cypress"
+      },
+      {
+        "command": "extension.runCypressTestsInUI",
+        "title": "CY: Run Cypress Tests in UI mode"
+      },
+      {
+        "command": "extension.runCypressTestsHeadless",
+        "title": "CY: Run Cypress Tests in headless mode"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.78.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4",
+    "ts-loader": "^9.4.2",
+    "webpack": "^5.81.0",
+    "webpack-cli": "^5.0.2",
+    "@vscode/test-electron": "^2.3.0"
+  }
+}
